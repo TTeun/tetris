@@ -14,11 +14,15 @@ public:
     size_t width;
     size_t height;
 
-    GameObjects *objects;
+    void moveRight();
+    void moveLeft();
+    void moveDown();
+    void rotate();
 
-private:
+    GameObjects *objects;
     Timer *timer;
     Renderer *renderer;
+
 };
 
 #endif

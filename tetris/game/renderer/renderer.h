@@ -8,9 +8,11 @@
 #include <glm/glm.hpp>
 #include "../gameobjects/gameobjects.h"
 
+class Game;
+
 class Renderer {
 public:
-    Renderer(size_t w, size_t h);
+    Renderer(size_t w, size_t h, Game *game);
     void init(GameObjects *objects);
     void render(GameObjects *objects);
     GLFWwindow* window;

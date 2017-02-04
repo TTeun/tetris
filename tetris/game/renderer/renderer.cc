@@ -7,7 +7,7 @@
 #include <glm/glm.hpp>
 #include "loadshader.cc"
 
-Renderer::Renderer(size_t w, size_t h)
+Renderer::Renderer(size_t w, size_t h, Game *_game)
 {
     std::cout << "Renderer constructor started\n";
     if ( !glfwInit() )
@@ -34,6 +34,8 @@ Renderer::Renderer(size_t w, size_t h)
 
     shaderProg = LoadShaders("tetris/game/renderer/shaders/vert.vt", "tetris/game/renderer/shaders/frag.fr");
 
+    glfwSetWindowUserPointer(window, _game);
+
     width = w;
     height = h;
 }
@@ -41,6 +43,7 @@ Renderer::Renderer(size_t w, size_t h)
 void Renderer::init(GameObjects *objects) {
     objects->arena->setup();
     objects->freeBlock->setup();
+    objects->setBlock->setup();
 }
 
 void Renderer::render(GameObjects *objects) {
@@ -49,9 +52,9 @@ void Renderer::render(GameObjects *objects) {
     glUseProgram(shaderProg);
 
     objects->freeBlock->render(width, height, GL_TRIANGLES);
+    objects->setBlock->render(width, height, GL_TRIANGLES);
     objects->arena->render(width, height, GL_LINE_LOOP);
 
     glfwSwapBuffers(window);
     glfwPollEvents();
 }
-

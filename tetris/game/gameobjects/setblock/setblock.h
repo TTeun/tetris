@@ -12,10 +12,7 @@ public:
     SetBlock(size_t w, size_t h);
     void updateBuffers(size_t w, size_t h);
 
-private:
-
     vector <vector<bool> > matrix; 
-
 
 
 

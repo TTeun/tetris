@@ -1,10 +1,10 @@
 #include "setblock.h"
 
 SetBlock::SetBlock(size_t w, size_t h) {
-    matrix.reserve(h);
-    for (size_t i = 0; i < h; ++i) {
-        matrix[i].reserve(w);
-        for (size_t j = 0; j < w; ++j)
+    matrix.reserve(h + 4);
+    for (size_t i = 0; i < h + 4; ++i) {
+        matrix[i].reserve(w + 4);
+        for (size_t j = 0; j < w + 4; ++j)
             matrix[i][j] = false;
     }
 }
@@ -16,16 +16,16 @@ void SetBlock::updateBuffers(size_t w, size_t h) {
     float halfH = dx * (h / 2.0f);
     coords.clear();
 
-    for (size_t i = 0; i < w; ++i)
-        for (size_t j = 0; j < h; ++j)
+    for (size_t i = 2; i < h + 2; ++i)
+        for (size_t j = 2; j < w + 2; ++j)
             if (matrix[i][j])
-                appendSquare(-halfW + j * dx, halfH - i * dx, dx);
+                appendSquare(-halfW + (j - 2) * dx, halfH - (i - 2) * dx, dx);
 
 
 
     colours.clear();
     for (size_t i = 0; i < coords.size(); i += 3) {
-        colours.push_back(1.0f);
+        colours.push_back(0.5f);
         colours.push_back(0.2f);
         colours.push_back(0.2f);
     }
