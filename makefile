@@ -1,0 +1,2 @@
+#!/bin/bash
+g++ main.cc tetris/game/renderer/renderer.cc tetris/game/game.cc tetris/game/timer/timer.cc tetris/game/gameobjects/setblock/setblock.cc tetris/game/gameobjects/freeblock/freeblock.cc tetris/game/gameobjects/renderable/renderable.cc -std=c++11 -Wall -lglfw -lGLEW -lGL
