@@ -10,7 +10,7 @@
 class Renderable {
 public:
     void setup();
-    void appendSquare(float x, float y, float dx);
+    void appendSquare(float x, float y, float dx, float R, float G, float B);
     void render(size_t width, size_t height, GLuint drawType);
 
 

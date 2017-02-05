@@ -19,16 +19,40 @@ void Renderable::setup() {
     glBindVertexArray(0);
 }
 
-void Renderable::appendSquare(float x, float y, float dx) {
+void Renderable::appendSquare(float x, float y, float dx, float R, float G, float B) {
+    x += 0.03 * dx;
+    y += 0.03 * dx;
+    dx = 0.94 * dx;
     std::vector <float> block = {
         x, y, 0.0f,
         x + dx, y, 0.0f,
         x + dx, y - dx, 0.0f,
         x + dx, y - dx, 0.0f,
         x, y - dx, 0.0f,
-        x, y, 0.0f
+        x, y, 0.0f,
+        x + dx / 10, y - dx / 10, 0.0,
+        x + dx / 5, y - dx / 10, 0.0,
+        x + dx / 10, y - dx / 5, 0.0,
+        x + 9 * dx / 10, y - 9 * dx / 10, 0.0,
+        x + 4 * dx / 5, y - 9 * dx / 10, 0.0,
+        x + 9 * dx / 10, y - 4 * dx / 5, 0.0,
     };
     coords.insert(coords.end(), block.begin(), block.end());
+    for (int i = 0; i < 6; ++i) {
+        colours.push_back(R);
+        colours.push_back(G);
+        colours.push_back(B);
+    }
+    for (int i = 0; i < 3; ++i) {
+        colours.push_back(1.0);
+        colours.push_back(1.0);
+        colours.push_back(1.0);
+    }
+    for (int i = 0; i < 3; ++i) {
+        colours.push_back(0.1);
+        colours.push_back(0.1);
+        colours.push_back(0.1);
+    }
 }
 
 void Renderable::render(size_t width, size_t height, GLuint drawType) {

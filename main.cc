@@ -5,8 +5,6 @@ using namespace std;
 
 int main()
 {
-    cout << "Hallo\n";
     Tetris tetris;
     tetris.game->play();
-
 }

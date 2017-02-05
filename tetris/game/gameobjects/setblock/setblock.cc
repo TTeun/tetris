@@ -15,19 +15,13 @@ void SetBlock::updateBuffers(size_t w, size_t h) {
     float halfW = dx * (w / 2.0f);
     float halfH = dx * (h / 2.0f);
     coords.clear();
+    colours.clear();
 
     for (size_t i = 2; i < h + 2; ++i)
         for (size_t j = 2; j < w + 2; ++j)
             if (matrix[i][j])
-                appendSquare(-halfW + (j - 2) * dx, halfH - (i - 2) * dx, dx);
+                appendSquare(-halfW + (j - 2) * dx, halfH - (i - 2) * dx, dx, 0.5, 0.2, 0.2);
 
 
-
-    colours.clear();
-    for (size_t i = 0; i < coords.size(); i += 3) {
-        colours.push_back(0.5f);
-        colours.push_back(0.2f);
-        colours.push_back(0.2f);
-    }
 
 }

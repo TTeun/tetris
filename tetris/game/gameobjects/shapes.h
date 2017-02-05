@@ -2,7 +2,6 @@
 #define SHAPES__H
 
 #include <vector>
-#include <assert.h>     /* assert */
 
 using namespace std;
 
@@ -34,6 +33,12 @@ public:
                 0b0110,
                 0b0110,
                 0b0000
+            },
+
+            {   0b0000,
+                0b0100,
+                0b1110,
+                0b0000
             }
         };
 
@@ -43,31 +48,6 @@ public:
             shapes1[3].push_back(rotate(shapes1[2][i]));
         }
 
-        for (int i = 0; i < 4; ++i) {
-            for (int j = 0; j < 4; ++j)
-                std::cout << ((shapes1[0][0][i] & (1 << j)) != 0);
-            std::cout << '\n';
-        }
-        std::cout << '\n';
-        for (int i = 0; i < 4; ++i) {
-            for (int j = 0; j < 4; ++j)
-                std::cout << ((shapes1[1][0][i] & (1 << j)) != 0);
-            std::cout << '\n';
-        }
-        std::cout << '\n';
-        for (int i = 0; i < 4; ++i) {
-            for (int j = 0; j < 4; ++j)
-                std::cout << ((shapes1[2][0][i] & (1 << j)) != 0);
-            std::cout << '\n';
-        }
-        std::cout << '\n';
-        for (int i = 0; i < 4; ++i) {
-            for (int j = 0; j < 4; ++j)
-                std::cout << ((shapes1[3][0][i] & (1 << j)) != 0);
-            std::cout << '\n';
-        }
-
-
     }
 
     enum SHAPES_TYPES
@@ -76,6 +56,7 @@ public:
         L2,
         LINE,
         SQUARE,
+        PODIUM,
         NUMSHAPES
     };
 

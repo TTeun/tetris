@@ -28,20 +28,15 @@ void FreeBlock::updateBuffers(size_t w, size_t h) {
     float halfW = dx * (w / 2.0f);
     float halfH = dx * (h / 2.0f);
     coords.clear();
+    colours.clear();
 
     for (size_t i = 0; i < 4; ++i)
         for (size_t j = 0; j < 4; ++j)
             if (shapes->shapes1[rot][type][i] & (1 << j))
-                appendSquare(-halfW + (w / 2 + (xpos + j - 1)) * dx, halfH - (ypos + i) * dx, dx);
+                appendSquare(-halfW + (w / 2 + (xpos + j - 1)) * dx, halfH - (ypos + i) * dx, dx, 1.0, 0.2, 0.2);
 
 
 
-    colours.clear();
-    for (size_t i = 0; i < coords.size(); i += 3) {
-        colours.push_back(1.0f);
-        colours.push_back(0.2f);
-        colours.push_back(0.2f);
-    }
 
 }
 
